@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	cmp "github.com/izaakdale/blockchain/components"
@@ -11,17 +12,16 @@ func init() {
 }
 
 func main() {
-	bc := cmp.NewBlockchain()
-	b := bc.LastBlock()
-	bc.CreateBlock(5, b.Hash())
-	bc.AddTransaction("izaak", "mahtab", 0.129804)
-	b = bc.LastBlock()
-	bc.CreateBlock(10, b.Hash())
-	bc.AddTransaction("mahtab", "izaak", 0.30080)
-	bc.AddTransaction("mahtab", "izaak", 0.50080)
-	b = bc.LastBlock()
-	bc.CreateBlock(15, b.Hash())
+	miner := "miningNerd"
+	bc := cmp.NewBlockchain(miner)
+	bc.AddTransaction("izaak", "mahtab", 1)
+	bc.Mining()
+
+	bc.AddTransaction("mahtab", "izaak", 2)
+	bc.AddTransaction("mahtab", "izaak", 3)
+	bc.Mining()
 
 	bc.Print()
-	// fmt.Println(bc.chain[0].Hash())
+
+	fmt.Println(bc.CalcTotalAmount("miningNerd"))
 }
