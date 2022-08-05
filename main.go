@@ -12,16 +12,22 @@ func init() {
 }
 
 func main() {
-	miner := "miningNerd"
-	bc := cmp.NewBlockchain(miner)
-	bc.AddTransaction("izaak", "mahtab", 1)
-	bc.Mining()
+	// miner := "miningNerd"
+	// bc := cmp.NewBlockchain(miner)
+	// bc.AddTransaction("izaak", "mahtab", 1)
+	// bc.Mining()
 
-	bc.AddTransaction("mahtab", "izaak", 2)
-	bc.AddTransaction("mahtab", "izaak", 3)
-	bc.Mining()
+	// bc.AddTransaction("mahtab", "izaak", 2)
+	// bc.AddTransaction("mahtab", "izaak", 3)
+	// bc.Mining()
 
-	bc.Print()
+	// bc.Print()
 
-	fmt.Println(bc.CalcTotalAmount("miningNerd"))
+	// fmt.Println(bc.CalcTotalAmount("miningNerd"))
+
+	w := cmp.NewWallet()
+	fmt.Println(w.PrivateKeyStr())
+	fmt.Println(w.PublicKeyStr())
+
+	fmt.Println(w.Address())
 }
